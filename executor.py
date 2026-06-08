@@ -35,7 +35,12 @@ LOGS_DIR = os.path.join(APPLICATION_PATH, "logs")
 # Try importing Tesseract, but don't fail if not available
 try:
     import pytesseract
-    TESSERACT_AVAILABLE = True
+    # Check if tesseract binary is actually in the PATH
+    try:
+        pytesseract.get_tesseract_version()
+        TESSERACT_AVAILABLE = True
+    except Exception:
+        TESSERACT_AVAILABLE = False
 except ImportError:
     TESSERACT_AVAILABLE = False
 
@@ -61,7 +66,9 @@ class WorkflowExecutor(QObject):
         if TESSERACT_AVAILABLE:
             self._debug_msg("Tesseract OCR is available")
         else:
-            self._debug_msg("Tesseract OCR is not available, will use OpenCV text detection as fallback")
+            self._debug_msg("⚠️ Tesseract OCR binary not found in PATH.")
+            self._debug_msg("If you have installed Tesseract, please add its installation folder (e.g., C:\\Program Files\\Tesseract-OCR) to your System PATH environment variable.")
+            self._debug_msg("The tool will use OpenCV text detection as a fallback, but Tesseract is highly recommended for better accuracy.")
 
     def _open_execution_log(self):
         """Create a plain-text log file for this workflow run."""
