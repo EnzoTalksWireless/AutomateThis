@@ -1,0 +1,9 @@
+PyQt6>=6.5.0
+pyautogui>=0.9.54
+opencv-python>=4.8.0
+pytesseract>=0.3.10
+pillow>=10.0.0
+python-dateutil>=2.8.2
+keyboard>=0.13.5
+mouse>=0.7.1
+pywin32>=306; platform_system=="Windows" 
