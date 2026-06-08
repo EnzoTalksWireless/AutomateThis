@@ -722,7 +722,7 @@ class AutomationToolGUI(QMainWindow):
             # Set taskbar icon
             if hasattr(sys, 'getwindowsversion'):  # Windows only
                 import ctypes
-                myappid = 'mycompany.erpautomation.1.0'  # Arbitrary string
+                myappid = 'mycompany.erpautomation.4.0'  # Arbitrary string
                 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         
         # Set modern style
@@ -1205,7 +1205,7 @@ class AutomationToolGUI(QMainWindow):
                 
                 # Collect data from steps
                 workflow = {
-                    "version": "1.0",
+                    "version": "4.0",
                     "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "debug_mode": self.debug_mode.isChecked(),
                     "steps": []
@@ -2084,25 +2084,18 @@ class AboutDialog(QDialog):
         title_label.setStyleSheet("font-size: 24pt; font-weight: bold; color: #88CCFF;")
         layout.addWidget(title_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
-        version_label = QLabel("Version 2.0")
+        version_label = QLabel("Version 4.0")
         version_label.setStyleSheet("font-size: 14pt; color: #00FF00;")
         layout.addWidget(version_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
         # New Features Section
-        new_features_group = QGroupBox("What's New in Version 2.0")
+        new_features_group = QGroupBox("What's New in Version 4.0")
         new_features_layout = QVBoxLayout()
         
         features_text = QLabel(
             "• Interactive Mode for Mouse Clicks\n"
-            "  - Scroll pages using arrow keys\n"
-            "  - Click when ready using Space/Enter\n"
-            "  - Skip steps with Escape key\n\n"
             "• Undo / Redo for workflow steps\n"
-            "  - Revert or re-apply step list changes\n\n"
             "• Improved User Interface\n"
-            "  - Clearer step configuration\n"
-            "  - Better error handling\n"
-            "  - Enhanced debug information"
         )
         features_text.setStyleSheet("color: #e0e0e0; font-size: 11pt;")
         new_features_layout.addWidget(features_text)
@@ -2111,15 +2104,14 @@ class AboutDialog(QDialog):
 
         # Description
         description = QLabel(
-            "A powerful automation tool for creating and running custom workflows.\n"
-            "Automate repetitive tasks with mouse clicks, keyboard input, and image recognition."
+            "A powerful, completely open-source automation tool for creating and running custom workflows.\n"
         )
         description.setWordWrap(True)
         description.setStyleSheet("color: #e0e0e0; font-size: 11pt;")
         layout.addWidget(description, alignment=Qt.AlignmentFlag.AlignCenter)
 
         # Copyright
-        copyright_label = QLabel("© 2024 All rights reserved")
+        copyright_label = QLabel("© 2026 Open-Source Project")
         copyright_label.setStyleSheet("color: #888888;")
         layout.addWidget(copyright_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
